@@ -6,7 +6,7 @@ Here is the subject (in french)
 
 **CT.1203 Sujet du projet informatiqueSujet**
 
-__Le projet consiste à écrire une application qui gère des partitions de musique.Une partition possède:__
+_Le projet consiste à écrire une application qui gère des partitions de musique.Une partition possède:_
 
 - un titre (Partita pour flûte)
 - un mouvement: souvent un numéro mais cela peut être une danse (allemande, gigue, ...) ou une indication de tempo (allegro, andante ...)
@@ -21,3 +21,8 @@ __L'application doit permettre de:__
 
 - créer, modifier, supprimer des partitions, des compositeurs, des éditeurs, des instruments, des formats
 - afficher la liste des partitions pour un compositeur,•afficher la liste des partitions pour un instrument ou un groupe d’instrument
+
+
+## Info Dev
+
+**Carractère interdit dans les saves fichiers : '&'** _il s'agit du carractère 'vide'_

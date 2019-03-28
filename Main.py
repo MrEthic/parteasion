@@ -1,7 +1,8 @@
+import Partissions as prt
 
+def load():
 
+    partissions, compositeurs, editeurs, instruments = {}, {}, {}, {}
 
+    changelog = {}
 
-while True:
-
-    a = 1
