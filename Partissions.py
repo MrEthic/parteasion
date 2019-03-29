@@ -12,18 +12,29 @@
 #   instruemnts:[id,]
 # }
 
-ARGUMENTS = ['titre', 'compositeur', 'editeur', 'mouvement', 'tempo', 'ton', 'format', 'records', 'instruments']
+ARGUMENTS = {
+    'titre':('obl',),
+    'compositeur':('obl', 'id'),
+    'editeur':('fac', 'id'),
+    'mouvement':('fac',),
+    'tempo':('fac',),
+    'ton':('fac',),
+    'format':('fac','id'),
+    'records':('list',),
+    'instruments':('list', 'id')
+}
 
 Counter = 0
 
 
-def createPartission(rawDatas):
+def loadPartission(rawDatas):
 
     datas = rawDatas.split(',')
     partission = {}
-
+    i = 0
     for arg in ARGUMENTS:
-        partission[arg] = datas[ARGUMENTS.index(arg)]
+        partission[arg] = datas[i]
+        i += 1
 
     return partission
 
