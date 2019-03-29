@@ -7,7 +7,7 @@ def load():
 
     changelog = {}
     datas = {
-        'partissions':partissions,
+         'partissions':partissions,
          'compositeurs':compositeurs,
          'editeurs':editeurs,
          'formats':formats,
