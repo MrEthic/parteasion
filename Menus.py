@@ -81,3 +81,44 @@ actions = {
     'ajouter':ajouter,
     'rechercher':rechercher
 }
+
+
+MODELE_PARTITION = {
+    'titre':None,
+    'mouvement': None,
+    'tempo':None,
+    'identifiant':None,
+    'ton':None,
+    'compositeur':None,
+    'editeur':None,
+    'format':None,
+    'enregistrement':None,
+    'instruments':None
+}
+
+MODELE_COMPOSITEUR = {
+    'nom':None,
+    'prenom':None,
+    'siecle':None
+
+}
+
+MODELE_EDITEUR = {
+    'nom':None,
+    'prenom':None,
+    'siecle':None
+
+}
+
+MODELE_ENREGISTREMENT = {
+    'nom':None,
+    'date':None
+
+}
+
+MODELE_INSTRUMENT = {
+    'nom':None,
+    'type':None
+
+}
+
