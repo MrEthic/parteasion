@@ -28,17 +28,7 @@ MULTI_PARAM = ['records', 'instruments']
 
 Counter = 0
 
-def getAnswer(answers):
-    ent = input('   --> ').lower()
-    while True:
-        if ent == '':
-            return None
-        for word, al in als.aliases.items():
-            if not word in answers:
-                continue
-            if ent in al:
-                return word
-        ent = input('Requette non valide, recomencer\n   --> ')
+
 
 def createElement(model):
     for k in model:
@@ -46,6 +36,7 @@ def createElement(model):
             model[k] = []
             while True:
                 ent = input('Ajouter un ' + str(k) + ' (Appuyez sur "Entrée" pour terminer la saisi')
+                if checkFor(ent, )
                 if ent == '':
                     break
                 model[k].append(ent)
@@ -53,6 +44,14 @@ def createElement(model):
         else:
             ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide')
             
+def checkFor(value, indict):
+    if value in indict.values():
+        printElement(indict[value])
+        return True
+    else:
+        print('Impossible de reconaitre la valeur entrée : ', value)
+        rechercheElement(indict, value)
+        return False
 
             
             
