@@ -5,6 +5,7 @@ __pycache__/
 
 
 #ignore stupid stuff :
+test.py
 *txt
 *jpeg
 *png

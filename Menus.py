@@ -1,5 +1,5 @@
 import Aliases as als
-import Partissions as prt
+import Utils as util
 
 def init():
     rtn = ' ' + 33*'/' + '|\n' + 2* ('||' + 30*' ' + '|||\n')
