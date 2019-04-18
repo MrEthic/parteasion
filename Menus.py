@@ -1,5 +1,5 @@
 import Aliases as als
-import Partissions as prt
+import Utils as util
 
 def init():
     rtn = ' ' + 33*'/' + '|\n' + 2* ('||' + 30*' ' + '|||\n')
@@ -30,8 +30,7 @@ def home(datas):
     actions.get(respond)(datas)
 
 def ajouter(datas):
-    print('Que voulez vous ajouter ? (Partition, Compositeur, Editeur, Instrument, Format')
-    respond = getAnswer(['partission', 'compositeur', 'editeur', 'instrument', 'format'])
+    
 
 def ajouterPartition(datas):
     args = prt.ARGUMENTS.copy()

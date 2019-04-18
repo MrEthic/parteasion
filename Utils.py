@@ -12,47 +12,61 @@
 #   instruemnts:[id,]
 # }
 
-ARGUMENTS = {
-    'titre':('obl',),
-    'compositeur':('obl', 'id'),
-    'editeur':('fac', 'id'),
-    'mouvement':('fac',),
-    'tempo':('fac',),
-    'ton':('fac',),
-    'format':('fac','id'),
-    'records':('list',),
-    'instruments':('list', 'id')
+MODEL_PARTISSIONT = {
+    'titre':None,
+    'compositeur':None,
+    'editeur':None,
+    'mouvement':None,
+    'tempo':None,
+    'ton':None,
+    'format':None,
+    'records':None,
+    'instruments':None
 }
 
 MULTI_PARAM = ['records', 'instruments']
+KEYED_PARAM = ['compositeur', 'editeur', 'format', 'records', 'instruments']
 
 Counter = 0
 
-def getAnswer(answers):
-    ent = input('   --> ').lower()
-    while True:
-        if ent == '':
-            return None
-        for word, al in als.aliases.items():
-            if not word in answers:
-                continue
-            if ent in al:
-                return word
-        ent = input('Requette non valide, recomencer\n   --> ')
+
 
 def createElement(model):
-    for k in model:
-        if k in MULTI_PARAM:
-            model[k] = []
+    element = model.copy()
+    for k in element:
+        stck = ''
+        if k in KEYED_PARAM: #si le parametre est sous forme de clefs
+            stck = getattr(Datas, str(k)) #recup les donnes specifique
+        if k in MULTI_PARAM: #si le prametre est liée a une liste
+            element[k] = []
             while True:
                 ent = input('Ajouter un ' + str(k) + ' (Appuyez sur "Entrée" pour terminer la saisi')
                 if ent == '':
                     break
-                model[k].append(ent)
-        
+                elif (checkFor(ent, k, stck)): #verifie que la clef existe
+                    element[k].append(ent) #ajoute cette clef a la list
         else:
             ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide')
+            if ent == '':
+                return
+            elif checkFor(ent, k, stck):
+                element[k] = ent
+
+
+
             
+
+
+def checkFor(value, key, indict):
+    if not key in KEYED_PARAM: #le parametre n'est pas sous forme de clef
+        return True
+    elif value in indict.values(): #Si la clef est reconu
+        printElement(indict[value]) #imprime l'element
+        return True
+    else: #sinon
+        print('Impossible de reconaitre la valeur entrée : ', value)
+        rechercheElement(indict, value) #affiche la recherche correspondante
+        return False
 
             
             
