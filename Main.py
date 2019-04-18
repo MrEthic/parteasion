@@ -5,14 +5,12 @@ def load():
 
     partissions, compositeurs, editeurs, formats, instruments = {}, {}, {}, {}; {}
 
-    changelog = {}
     datas = {
          'partissions':partissions,
          'compositeurs':compositeurs,
          'editeurs':editeurs,
          'formats':formats,
-         'instruments':instruments,
-         'changelog':changelog
+         'instruments':instruments
     }
     return datas
 
