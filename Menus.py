@@ -30,7 +30,38 @@ def home(datas):
     actions.get(respond)(datas)
                 
 def ajouter():
-    print('ajouter')
+    print("que voulez-vous ajouter ? ","\n" , "1-partition","\n" , "2-compositceur" ,"\n" ,"3-editeur","\n" ,"4-instrument","\n" ,"5-format"))
+    type=getAnswer("partition","compositeur","editeur","instrument","format")
+
+    if type == "partition":
+        partition=util.createElement(MODEL_PARTITION)
+        numero="P"+ Datas.lastP
+        Datas.partitions[numero]=partition
+        Datas.lastP=Datas.lastP+1
+
+    if type == "compositeur":
+        compositeur=util.createElement(MODEL_COMPOSITEUR)
+        numero="C"+ Datas.lastC
+        Datas.compositeurs[numero]=compositeur
+        Datas.lastC=Datas.lastC+1
+
+    if type == "editeur":
+        editeur=util.createElement(MODEL_EDITEUR)
+        numero="E"+ Datas.lastE
+        Datas.editeurs[numero]=editeur
+        Datas.lastE=Datas.lastE+1
+
+    if type == "instrument":
+        instrument=util.createElement(MODEL_INSTRUMENT)
+        numero="P"+ Datas.lastI
+        Datas.instruments[numero]=instrument
+        Datas.lastI=Datas.lastI+1
+
+    if type == "format":
+        f=util.createElement(MODEL_FORMAT)
+        numero="P"+ Datas.lastF
+        Datas.formats[numero]=f
+        Datas.lastF=Datas.lastF+1
 
 def rechercher():
     print('rechercher')
