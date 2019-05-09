@@ -45,7 +45,10 @@ def checkFor(value, key, indict):
         rechercheElement(indict, value) #affiche la recherche correspondante
         return False
 
-            
+def rechercheElement(indict, value):
+    args = value.split(' ')
+    for e in indict.values():
+               
             
 
 def edit(element, **edits): #edition d'un disctionaire existant
