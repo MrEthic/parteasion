@@ -18,5 +18,6 @@ aliases = {
     'format':['Format', 'format', 'forme', 'form', 'size', 'Size', 'taille', 'TAILLE', 'Taille']
 
 }
+#hugo
 
 
