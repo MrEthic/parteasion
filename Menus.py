@@ -1,5 +1,6 @@
 import Aliases as als
 import Utils as util
+import Datas
 
 def init():
     rtn = ' ' + 33*'/' + '|\n' + 2* ('||' + 30*' ' + '|||\n')
@@ -23,50 +24,29 @@ def getAnswer(answers):
         ent = input('Requette non valide, recomencer\n   --> ')
 
 
-def home(datas):
+def home():
 
     print('Que voulez faire ? (Ajouter, Supprimer, Gere, Sauvegarder, Quitter)')
     respond = getAnswer(['ajouter', 'supprimer', 'gere', 'sauvegarder', 'quitter'])
-    actions.get(respond)(datas)
+    actions.get(respond)()
                 
 def ajouter():
-    print("que voulez-vous ajouter ? ","\n" , "1-partition","\n" , "2-compositceur" ,"\n" ,"3-editeur","\n" ,"4-instrument","\n" ,"5-format")
-    type=getAnswer("partition","compositeur","editeur","instrument","format")
-
-    if type == "partition":
-        partition=util.createElement(MODELE_PARTITION)
-        numero="P"+ Datas.lastP
-        Datas.partitions[numero]=partition
-        Datas.lastP=Datas.lastP+1
-
-    if type == "compositeur":
-        compositeur=util.createElement(MODEL_COMPOSITEUR)
-        numero="C"+ Datas.lastC
-        Datas.compositeurs[numero]=compositeur
-        Datas.lastC=Datas.lastC+1
-
-    if type == "editeur":
-        editeur=util.createElement(MODEL_EDITEUR)
-        numero="E"+ Datas.lastE
-        Datas.editeurs[numero]=editeur
-        Datas.lastE=Datas.lastE+1
-
-    if type == "instrument":
-        instrument=util.createElement(MODEL_INSTRUMENT)
-        numero="P"+ Datas.lastI
-        Datas.instruments[numero]=instrument
-        Datas.lastI=Datas.lastI+1
-
-    if type == "format":
-        f=util.createElement(MODEL_FORMAT)
-        numero="P"+ Datas.lastF
-        Datas.formats[numero]=f
-        Datas.lastF=Datas.lastF+1
+    print("Que voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositceur" ,"\n" ," - editeur","\n" ," - instrument","\n")
+    ent = getAnswer(["partition","compositeur","editeur","instrument","format"])
+    modele = 'MODELE_' + ent.upper()
+    elem = util.createElement(modele)
+    inStck = ent + 's'
+    stck = getattr(Datas, inStck)
+    lastId = stck[maxId]
+    Id = int(lastId[1:]) + 1
+    newId = ent[0].upper() + str(Id)
+    stck[newId] = elem
+    
 
 
 def rechercher():
     print("que voulez-vous rechercher ? ", "\n", "1-partition", "\n", "2-compositceur", "\n")
-    type = getAnswer("partition", "compositeur")
+    type = getAnswer(["partition", "compositeur"])
 
     if type == "partition":
         information = input("Donnez une information sur la partition")
@@ -80,7 +60,7 @@ def rechercher():
                         for d in range (0,len(solution)):
                             if partitions.items[k] == solution[d]:
                                 score[d]= score [d] +1
-                            else
+                            else:
                                 solution.append = partitions.items[k]
                                 score.append=1
 

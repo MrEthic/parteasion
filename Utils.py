@@ -2,7 +2,7 @@ from texttable import Texttable
 import Datas
 
 MULTI_PARAM = ['records', 'instruments']
-KEYED_PARAM = ['compositeur', 'editeur', 'format', 'records', 'instruments']
+KEYED_PARAM = ['compositeur', 'editeur', 'records', 'instruments']
 
 Counter = 0
 
@@ -26,7 +26,7 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
         else:
             ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide)\t')
             if ent == '':
-                return
+                continue
             elif checkFor(ent, k, stck):
                 element[k] = ent
     return element
@@ -40,7 +40,7 @@ def checkFor(value, key, indict):
     if not key in KEYED_PARAM or key == '': #le parametre n'est pas sous forme de clef
         return True
     elif value in indict.values(): #Si la clef est reconu
-        #printElement(indict[value]) #imprime l'element
+        printElements([indict[value]]) #imprime l'element
         return True
     else: #sinon
         print('Impossible de reconaitre la valeur entrée : ', value)
@@ -48,9 +48,25 @@ def checkFor(value, key, indict):
         return False
 
 def rechercheElement(indict, value):
-    args = value.split(' ')
-    for e in indict.values():
-        print('r')
+    temp = [] #list des resultat valide en vrac
+    args = value.split(' ') #list des arguments de la recherche
+    for n, e in indict.items():
+        rslt = []  #tableau des correspondance
+        for v in e.values():
+            test = v if isinstance(v, list) else v.split(' ') if isinstance(v, str) else None #transforme les valeurs en list
+            rslt = rslt + [x in args for x in test] #ajoute les nouvelles correspondances
+        score = len(rslt) #calcule du score
+        if n in args:
+            score += 100 #++ le score si la clef fait partie des args
+        if score > 0:
+            t = (score, n)
+            temp.append(t) #ajout de cette list aux resultats
+    sortedTemp = sorted(temp, key=lambda item:item[0]) #trie des listes
+    results = [x[0] for x in sortedTemp] #garde que les element (sans le score)
+    return results
+
+
+
                
             
 
@@ -74,23 +90,24 @@ def edit(element, **edits): #edition d'un disctionaire existant
             if checkFor(add, param, stck):
                 element[param] = add
 
+def printElements(elements):
+    prt = Texttable()
+    temp = []
+    keys = elements[0].keys()
+    temp.append(keys)
+    for e in elements:
+        temp.append(e.values())
+    prt.add_rows(temp, header=True)
+    print(prt.draw())
 
-
-t=Texttable()
-MODELE_PARTITION = {
+tt = {
     'titre':'Clair de Lune',
     'tempo':'Andante',
     'identifiant':'P1',
     'ton':'majeur',
     'compositeur':'Debussy',
-    'instruments':'piano'
+    'instruments':['piano']
 }
 
-length=len(MODELE_PARTITION)
-keys=list(MODELE_PARTITION.keys())
-values=list(MODELE_PARTITION.values())
-
-t.add_rows([keys, values])
-print(t.draw())
 
 

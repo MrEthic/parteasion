@@ -6,6 +6,7 @@ partissions, compositeurs, editeurs, records, instruments = None, None, None, No
 def load():
     with open('datas.json') as dataFile:
         datas = json.loads(dataFile)
+
     partissions = datas['partissions']
     compositeurs = datas['compositeurs']
     editeurs = datas['editeurs']
