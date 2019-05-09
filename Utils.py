@@ -12,17 +12,18 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
     for k in element:
         stck = ''
         if k in KEYED_PARAM: #si le parametre est sous forme de clefs
-            stck = getattr(Datas, str(k)) #recup les donnes specifique
+            search = (str(k) + 's') if not str(k)[-1:] == 's' else str(k)
+            stck = getattr(Datas, search) #recup les donnes specifique
         if k in MULTI_PARAM: #si le prametre est liée a une liste
             element[k] = []
             while True:
-                ent = input('Ajouter un ' + str(k) + ' (Appuyez sur "Entrée" pour terminer la saisi')
+                ent = input('Ajouter un ' + str(k) + ' (Appuyez sur "Entrée" pour terminer la saisi)\t')
                 if ent == '':
                     break
                 elif (checkFor(ent, k, stck)): #verifie que la clef existe
                     element[k].append(ent) #ajoute cette clef a la list
         else:
-            ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide')
+            ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide)\t')
             if ent == '':
                 return
             elif checkFor(ent, k, stck):
@@ -35,10 +36,10 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
 
 
 def checkFor(value, key, indict):
-    if not key in KEYED_PARAM: #le parametre n'est pas sous forme de clef
+    if not key in KEYED_PARAM or key == '': #le parametre n'est pas sous forme de clef
         return True
     elif value in indict.values(): #Si la clef est reconu
-        printElement(indict[value]) #imprime l'element
+        #printElement(indict[value]) #imprime l'element
         return True
     else: #sinon
         print('Impossible de reconaitre la valeur entrée : ', value)
@@ -48,19 +49,27 @@ def checkFor(value, key, indict):
 def rechercheElement(indict, value):
     args = value.split(' ')
     for e in indict.values():
+        print('r')
                
             
 
 def edit(element, **edits): #edition d'un disctionaire existant
     
     for param, changes in edits.items():
-        
+
+        stck = ''
+        if param in KEYED_PARAM: #si le parametre est sous forme de clefs
+            search = (str(param) + 's') if not str(param)[-1:] == 's' else str(param)
+            stck = getattr(Datas, search) #recup les donnes specifique
+
         if changes == None:
             continue
 
-        if param in MULTI_PARAM:
+        if param in MULTI_PARAM and param in element:
             for add in changes:
-                element[param].append(add)
+                if (checkFor(add, param, stck)): #verifie que la clef existe
+                    element[param].append(add) #ajoute cette clef a la list
         elif param in element:
-            element[param] = changes
+            if checkFor(add, param, stck):
+                element[param] = add
 

@@ -30,11 +30,11 @@ def home(datas):
     actions.get(respond)(datas)
                 
 def ajouter():
-    print("que voulez-vous ajouter ? ","\n" , "1-partition","\n" , "2-compositceur" ,"\n" ,"3-editeur","\n" ,"4-instrument","\n" ,"5-format"))
+    print("que voulez-vous ajouter ? ","\n" , "1-partition","\n" , "2-compositceur" ,"\n" ,"3-editeur","\n" ,"4-instrument","\n" ,"5-format")
     type=getAnswer("partition","compositeur","editeur","instrument","format")
 
     if type == "partition":
-        partition=util.createElement(MODEL_PARTITION)
+        partition=util.createElement(MODELE_PARTITION)
         numero="P"+ Datas.lastP
         Datas.partitions[numero]=partition
         Datas.lastP=Datas.lastP+1
