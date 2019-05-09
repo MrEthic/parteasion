@@ -28,52 +28,12 @@ def home(datas):
     print('Que voulez faire ? (Ajouter, Supprimer, Gere, Sauvegarder, Quitter)')
     respond = getAnswer(['ajouter', 'supprimer', 'gere', 'sauvegarder', 'quitter'])
     actions.get(respond)(datas)
-
-def ajouter(datas):
-    
-
-def ajouterPartition(datas):
-    args = prt.ARGUMENTS.copy()
-    print('Remplissez les champs suivants : (les champs * sont obligatoire, laissez vide pour ne pas rensseigner)')
-    for arg, param in args:
-        print('Entrez un ' + arg)
-        while True:
-            ent = input('   --> ')
-            if 'fac' in param and ent == '':
-                args[arg] = None
-                break
-            if 'id' in param and arg in datas:
-                for key, value in datas[args].items():
-                    if ent == key or ent in value.values():
-                        ent = key
-                        break
-                ent = None
-                if 'obl' in param:
-                    print('Ce paramètre est obligatoire, votre entré est non valide, recommencer')
-                    continue
-
-            if not 'list' in param:
-                args[arg] = ent
-                break
-            
-            if ent == None:
-                continue
-            
-            if not isinstance(args[arg], list):
-                args[arg] = [ent]
-
-            args[arg].append(ent)
-
-            
-
                 
-            
-
-
-
+def ajouter():
+    print('ajouter')
 
 def rechercher():
-    print('')
+    print('rechercher')
 
 
 actions = {
@@ -99,25 +59,21 @@ MODELE_COMPOSITEUR = {
     'nom':None,
     'prenom':None,
     'siecle':None
-
 }
 
 MODELE_EDITEUR = {
     'nom':None,
     'prenom':None,
     'siecle':None
-
 }
 
 MODELE_ENREGISTREMENT = {
     'nom':None,
     'date':None
-
 }
 
 MODELE_INSTRUMENT = {
     'nom':None,
     'type':None
-
 }
 

@@ -1,28 +1,4 @@
-# Partission format :
-#
-# {
-#   titre:String
-#   compositeur:String (id)
-#   editeur:String (id)
-#   mouvement:String
-#   tempo:String
-#   ton:String
-#   format:String (id)
-#   enregistrements:[date,]
-#   instruemnts:[id,]
-# }
-
-MODEL_PARTISSIONT = {
-    'titre':None,
-    'compositeur':None,
-    'editeur':None,
-    'mouvement':None,
-    'tempo':None,
-    'ton':None,
-    'format':None,
-    'records':None,
-    'instruments':None
-}
+import Datas
 
 MULTI_PARAM = ['records', 'instruments']
 KEYED_PARAM = ['compositeur', 'editeur', 'format', 'records', 'instruments']
@@ -31,7 +7,7 @@ Counter = 0
 
 
 
-def createElement(model):
+def createElement(model): #Creation d'un disctionaire par apport a un modele
     element = model.copy()
     for k in element:
         stck = ''
@@ -51,6 +27,7 @@ def createElement(model):
                 return
             elif checkFor(ent, k, stck):
                 element[k] = ent
+    return element
 
 
 
@@ -68,10 +45,13 @@ def checkFor(value, key, indict):
         rechercheElement(indict, value) #affiche la recherche correspondante
         return False
 
-            
+def rechercheElement(indict, value):
+    args = value.split(' ')
+    for e in indict.values():
+               
             
 
-def edit(element, **edits):
+def edit(element, **edits): #edition d'un disctionaire existant
     
     for param, changes in edits.items():
         
