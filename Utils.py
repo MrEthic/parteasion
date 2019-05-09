@@ -1,3 +1,4 @@
+from texttable import Texttable
 import Datas
 
 MULTI_PARAM = ['records', 'instruments']
@@ -72,4 +73,24 @@ def edit(element, **edits): #edition d'un disctionaire existant
         elif param in element:
             if checkFor(add, param, stck):
                 element[param] = add
+
+
+
+t=Texttable()
+MODELE_PARTITION = {
+    'titre':'Clair de Lune',
+    'tempo':'Andante',
+    'identifiant':'P1',
+    'ton':'majeur',
+    'compositeur':'Debussy',
+    'instruments':'piano'
+}
+
+length=len(MODELE_PARTITION)
+keys=list(MODELE_PARTITION.keys())
+values=list(MODELE_PARTITION.values())
+
+t.add_rows([keys, values])
+print(t.draw())
+
 
