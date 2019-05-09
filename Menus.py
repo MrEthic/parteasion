@@ -63,8 +63,26 @@ def ajouter():
         Datas.formats[numero]=f
         Datas.lastF=Datas.lastF+1
 
+
 def rechercher():
-    print('rechercher')
+    print("que voulez-vous rechercher ? ", "\n", "1-partition", "\n", "2-compositceur", "\n")
+    type = getAnswer("partition", "compositeur")
+
+    if type == "partition":
+        information = input("Donnez une information sur la partition")
+        info = information.split(" ")
+        solution = []
+        score =[]
+        for k,v in partitions.items():
+            for param in v.values() :
+                for c in range (0,len(info)):
+                    if info[c] == v.values[param]:
+                        for d in range (0,len(solution)):
+                            if partitions.items[k] == solution[d]:
+                                score[d]= score [d] +1
+                            else
+                                solution.append = partitions.items[k]
+                                score.append=1
 
 
 actions = {
