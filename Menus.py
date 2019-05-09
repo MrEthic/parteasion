@@ -59,25 +59,21 @@ MODELE_COMPOSITEUR = {
     'nom':None,
     'prenom':None,
     'siecle':None
-
 }
 
 MODELE_EDITEUR = {
     'nom':None,
     'prenom':None,
     'siecle':None
-
 }
 
 MODELE_ENREGISTREMENT = {
     'nom':None,
     'date':None
-
 }
 
 MODELE_INSTRUMENT = {
     'nom':None,
     'type':None
-
 }
 
