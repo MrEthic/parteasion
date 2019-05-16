@@ -11,6 +11,7 @@ def init():
     print(rtn)
 
     Datas.load()
+    home()
 
 
 def getAnswer(answers):
@@ -36,14 +37,19 @@ def ajouter():
     print("Que voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
     ent = getAnswer(["partition","compositeur","editeur","instrument","format"])
     modele = 'MODELE_' + ent.upper()
-    elem = util.createElement(modele)
+    elem = util.createElement(MODELE[modele])
     inStck = ent + 's'
-    stck = getattr(Datas, inStck)
+    
+    stck = Datas.D[inStck]
+
+    #stck = getattr(Datas, inStck)
     lastId = stck['maxId']
+    L = lastId[0]
     Id = int(lastId[1:]) + 1
     newId = ent[0].upper() + str(Id)
-    stck['maxId'] = Id
+    stck['maxId'] = L + str(Id)
     stck[newId] = elem
+    Datas.save()
     home()
     
 def rechercher():
@@ -57,39 +63,42 @@ actions = {
     'rechercher':rechercher
 }
 
+MODELE = {
+    'MODELE_PARTITION': {
+        'titre':None,
+        'mouvement': None,
+        'tempo':None,
+        'identifiant':None,
+        'ton':None,
+        'compositeur':None,
+        'editeur':None,
+        'format':None,
+        'enregistrement':None,
+        'instruments':None
+    },
+    'MODELE_COMPOSITEUR': {
+        'nom':None,
+        'prenom':None,
+        'siecle':None
+    },
 
-MODELE_PARTITION = {
-    'titre':None,
-    'mouvement': None,
-    'tempo':None,
-    'identifiant':None,
-    'ton':None,
-    'compositeur':None,
-    'editeur':None,
-    'format':None,
-    'enregistrement':None,
-    'instruments':None
+    'MODELE_EDITEUR': {
+        'nom':None,
+        'prenom':None,
+        'siecle':None
+    },
+
+    'MODELE_ENREGISTREMENT': {
+        'nom':None,
+        'date':None
+    },
+
+    'MODELE_INSTRUMENT': {
+        'nom':None,
+        'type':None
+    }
 }
 
-MODELE_COMPOSITEUR = {
-    'nom':None,
-    'prenom':None,
-    'siecle':None
-}
 
-MODELE_EDITEUR = {
-    'nom':None,
-    'prenom':None,
-    'siecle':None
-}
-
-MODELE_ENREGISTREMENT = {
-    'nom':None,
-    'date':None
-}
-
-MODELE_INSTRUMENT = {
-    'nom':None,
-    'type':None
-}
+init()
 

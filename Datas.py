@@ -1,25 +1,27 @@
 import json
 import os
 
-partitions, compositeurs, editeurs, records, instruments = None, None, None, None, None
+partitions, compositeurs, editeurs, records, instruments = 2, None, None, None, None
+
+D = {}
 
 def load():
     with open('datas.json') as dataFile:
-        datas = json.loads(dataFile)
+        datas = json.load(dataFile)
 
-    partitions = datas['partitions']
-    compositeurs = datas['compositeurs']
-    editeurs = datas['editeurs']
-    records = datas['records']
-    instruments = datas['instruments']
+    D['partitions'] = datas['partitions']
+    #compositeurs = datas['compositeurs']
+    #editeurs = datas['editeurs']
+    #records = datas['records']
+    #instruments = datas['instruments']
 
 def save():
     datas = {
-        'partitions':partitions,
-        'compositeurs':compositeurs,
-        'editeurs':editeurs,
-        'records':records,
-        'instruments':instruments
+        'partitions':D['partitions'],
+        'compositeurs':0,
+        'editeurs':0,
+        'records':0,
+        'instruments':0
     }
     os.remove('old.json')
     os.rename('datas.json', 'old.json')

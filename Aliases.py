@@ -6,7 +6,7 @@ aliases = {
     'gerer':['Gérer', 'gerer', 'gere', 'gérer', 'manage'],
     'sauvegarder':['Sauvegarder', 'sauvegarder', 'Save', 'save', 'SAVE', 'sauvgarde', 'sauv'],
     'quitter':['Quitter', 'quitter', 'Quit', 'QUIT', 'Escape', 'ESCAPE', 'ESC', 'esc', 'quiter', 'kiter', 'qiter', 'kit'],
-    'partition':['Partition', 'PART', 'partition', 'part', 'parti', 'partoche', 'Particion', 'Partission', 'PARTICION', 'PARTISSION'],
+    'partition':['Partition', 'PART', 'partition', 'part', 'parti', 'partoche', 'Particion', 'partission', 'PARTICION', 'PARTISSION'],
     'compositeur':['compositeur', 'Compositeur', 'Composer', 'COMPOSER', 'Comp', 'COMP', 'conpositeur', 'conpo'],
     'instrument':['Instrument', 'instrument', 'instrumant', 'instru', 'instrumen', 'instruman'],
     'enregistrement':['Enregistrement', 'enregistrement', 'RECORD', 'record', 'REC', 'Rec', 'Record', 'Enreg', 'enregistremant'],
