@@ -1,0 +1,29 @@
+{
+    "partitions": {
+        "P2": {
+            "titre": "La Sonate",
+            "mouvement": "",
+            "tempo": "alegro",
+            "identifiant": "no 14 opus 27",
+            "ton": "do dièse mineur",
+            "compositeur": "C124",
+            "editeur": "",
+            "format": "F11",
+            "enregistrement": ["R14", "R21"],
+            "instruments": ["I3", "I21"]
+        },
+        "P3": {
+            "titre": "Sonate",
+            "mouvement": "",
+            "tempo": "alegro",
+            "identifiant": "no 19 opus 49",
+            "ton": "Sol mineur",
+            "compositeur": "C124",
+            "editeur": "",
+            "format": "F8",
+            " enregistrement ": ["R25", "R11"],
+            "instruments": ["I5"]
+        }
+    }
+
+}

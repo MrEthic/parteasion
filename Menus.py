@@ -10,6 +10,8 @@ def init():
 
     print(rtn)
 
+    Datas.load()
+
 
 def getAnswer(answers):
     ent = input('   --> ').lower()
@@ -26,12 +28,12 @@ def getAnswer(answers):
 
 def home():
 
-    print('Que voulez faire ? (Ajouter, Supprimer, Gere, Sauvegarder, Quitter)')
+    print('Que voulez faire ? (Ajouter, Supprimer, Gerer, Sauvegarder, Quitter)')
     respond = getAnswer(['ajouter', 'supprimer', 'gerer', 'sauvegarder', 'quitter'])
     actions.get(respond)()
                 
 def ajouter():
-    print("Que voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositceur" ,"\n" ," - editeur","\n" ," - instrument","\n")
+    print("Que voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
     ent = getAnswer(["partition","compositeur","editeur","instrument","format"])
     modele = 'MODELE_' + ent.upper()
     elem = util.createElement(modele)
@@ -42,28 +44,12 @@ def ajouter():
     newId = ent[0].upper() + str(Id)
     stck['maxId'] = Id
     stck[newId] = elem
+    home()
     
-
-
 def rechercher():
-    print("que voulez-vous rechercher ? ", "\n", "1-partition", "\n", "2-compositceur", "\n")
-    type = getAnswer(["partition", "compositeur"])
+    return 0
 
-    if type == "partition":
-        information = input("Donnez une information sur la partition")
-        info = information.split(" ")
-        solution = []
-        score =[]
-        for k,v in partitions.items():
-            for param in v.values() :
-                for c in range (0,len(info)):
-                    if info[c] == v.values[param]:
-                        for d in range (0,len(solution)):
-                            if partitions.items[k] == solution[d]:
-                                score[d]= score [d] +1
-                            else:
-                                solution.append = partitions.items[k]
-                                score.append=1
+
 
 
 actions = {

@@ -1,13 +1,13 @@
 import json
 import os
 
-partissions, compositeurs, editeurs, records, instruments = None, None, None, None, None
+partitions, compositeurs, editeurs, records, instruments = None, None, None, None, None
 
 def load():
     with open('datas.json') as dataFile:
         datas = json.loads(dataFile)
 
-    partissions = datas['partissions']
+    partitions = datas['partitions']
     compositeurs = datas['compositeurs']
     editeurs = datas['editeurs']
     records = datas['records']
@@ -15,7 +15,7 @@ def load():
 
 def save():
     datas = {
-        'partissions':partissions,
+        'partitions':partitions,
         'compositeurs':compositeurs,
         'editeurs':editeurs,
         'records':records,
