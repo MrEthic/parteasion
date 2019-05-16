@@ -62,7 +62,7 @@ def rechercheElement(indict, value):
             t = (score, n)
             temp.append(t) #ajout de cette list aux resultats
     sortedTemp = sorted(temp, key=lambda item:item[0]) #trie des listes
-    results = [x[0] for x in sortedTemp] #garde que les element (sans le score)
+    results = [x[1] for x in sortedTemp] #garde que les element (sans le score)
     return results
 
 

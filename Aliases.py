@@ -3,7 +3,7 @@ aliases = {
     'ajouter':['Ajouter', 'ajouter', 'ajouté', 'ajoute', 'ajout', 'add'],
     'rechercher':['Rechercher', 'rechercher', 'RECHERCHER', 'search', 'Search', 'SEARCH', 'rech', 'recherche', 'Recherche', 're', 'research'],
     'supprimer':['Supprimer', 'supprimer', 'SUPPRIMER', 'delete', 'supp', 'del', 'remove', 'enlever', 'supprim', 'suprimer'],
-    'gérer':['Gérer', 'gerer', 'gere', 'gérer', 'manage'],
+    'gerer':['Gérer', 'gerer', 'gere', 'gérer', 'manage'],
     'sauvegarder':['Sauvegarder', 'sauvegarder', 'Save', 'save', 'SAVE', 'sauvgarde', 'sauv'],
     'quitter':['Quitter', 'quitter', 'Quit', 'QUIT', 'Escape', 'ESCAPE', 'ESC', 'esc', 'quiter', 'kiter', 'qiter', 'kit'],
     'partition':['Partition', 'PART', 'partition', 'part', 'parti', 'partoche', 'Particion', 'Partission', 'PARTICION', 'PARTISSION'],

@@ -27,7 +27,7 @@ def getAnswer(answers):
 def home():
 
     print('Que voulez faire ? (Ajouter, Supprimer, Gere, Sauvegarder, Quitter)')
-    respond = getAnswer(['ajouter', 'supprimer', 'gere', 'sauvegarder', 'quitter'])
+    respond = getAnswer(['ajouter', 'supprimer', 'gerer', 'sauvegarder', 'quitter'])
     actions.get(respond)()
                 
 def ajouter():
@@ -37,9 +37,10 @@ def ajouter():
     elem = util.createElement(modele)
     inStck = ent + 's'
     stck = getattr(Datas, inStck)
-    lastId = stck[maxId]
+    lastId = stck['maxId']
     Id = int(lastId[1:]) + 1
     newId = ent[0].upper() + str(Id)
+    stck['maxId'] = Id
     stck[newId] = elem
     
 
