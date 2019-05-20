@@ -27,3 +27,9 @@ def save():
     os.rename('datas.json', 'old.json')
     with open('datas.json', 'w') as dataFile:
         json.dump(datas, dataFile)
+
+def reloadBackup():
+    os.rename('datas.json', 'bk.json')
+    os.rename('old.json', 'datas.json')
+    os.rename('bk.json', 'old.json')
+    load()

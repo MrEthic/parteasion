@@ -44,24 +44,32 @@ def checkFor(value, key, indict):
         return True
     else: #sinon
         print('Impossible de reconaitre la valeur entrée : ', value)
-        rechercheElement(indict, value) #affiche la recherche correspondante
+        search = rechercheElement(indict, value) #affiche la recherche correspondante
+        prt = [(x, indict[x]) for x in search]
+        printElements(prt)
         return False
 
 def rechercheElement(indict, value):
     temp = [] #list des resultat valide en vrac
+    value = value.lower()
     args = value.split(' ') #list des arguments de la recherche
     for n, e in indict.items():
+        if n == 'maxId':
+            continue
         rslt = []  #tableau des correspondance
         for v in e.values():
             test = v if isinstance(v, list) else v.split(' ') if isinstance(v, str) else None #transforme les valeurs en list
-            rslt = rslt + [x in args for x in test] #ajoute les nouvelles correspondances
+            if test == None:
+                continue
+            test = [x.lower() for x in test]
+            rslt = rslt + [x for x in test if x in args] #ajoute les nouvelles correspondances
         score = len(rslt) #calcule du score
         if n in args:
             score += 100 #++ le score si la clef fait partie des args
         if score > 0:
             t = (score, n)
             temp.append(t) #ajout de cette list aux resultats
-    sortedTemp = sorted(temp, key=lambda item:item[0]) #trie des listes
+    sortedTemp = sorted(temp, reverse=True, key=lambda item:item[0]) #trie des listes
     results = [x[1] for x in sortedTemp] #garde que les element (sans le score)
     return results
 
@@ -92,22 +100,24 @@ def edit(element, **edits): #edition d'un disctionaire existant
 
 def printElements(elements):
     prt = Texttable()
+    prt.set_max_width(0)
     temp = []
-    keys = elements[0].keys()
+    if isinstance(elements[0], tuple):
+        keys = ['ID'] + list(elements[0][1].keys())
+        param = [x[1] for x in elements]
+    else:
+        keys = ['ID'] + elements[0].keys()
+        param = elements
+
     temp.append(keys)
     for e in elements:
-        temp.append(e.values())
+        if isinstance(e, tuple):
+            val = [e[0]] + list(e[1].values())
+        else:
+            val = e.values()
+        temp.append(val)
     prt.add_rows(temp, header=True)
     print(prt.draw())
-
-tt = {
-    'titre':'Clair de Lune',
-    'tempo':'Andante',
-    'identifiant':'P1',
-    'ton':'majeur',
-    'compositeur':'Debussy',
-    'instruments':['piano']
-}
 
 
 
