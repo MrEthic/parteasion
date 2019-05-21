@@ -1,6 +1,7 @@
 import Aliases as als
 import Utils as util
 import Datas
+import sys
 
 def init():
     rtn = '\t\t\t' + ' ' + 33*'/' + '|\n' + 2* ('\t\t\t' + '||' + 30*' ' + '|||\n')
@@ -11,7 +12,8 @@ def init():
     print(rtn)
 
     Datas.load()
-    home()
+    while True:
+        home()
 
 
 def getAnswer(answers):
@@ -29,12 +31,11 @@ def getAnswer(answers):
 
 def home():
 
-    print('\nQue voulez faire ? (Ajouter, Rechercher, Supprimer, Gerer, Sauvegarder, Quitter)')
-    respond = getAnswer(['ajouter', 'rechercher', 'supprimer', 'gerer', 'sauvegarder', 'quitter', 'backup'])
+    print('\nQue voulez faire ? (Ajouter, Rechercher, Supprimer, Modifier, Sauvegarder, Quitter ou recharger un backup)')
+    respond = getAnswer(['ajouter', 'rechercher', 'supprimer','modifier', 'sauvegarder', 'quitter', 'backup'])
     if not respond == None:
         actions.get(respond)()
-    else:
-        endProg()
+
                 
 def ajouter():
     print("\nQue voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
@@ -51,7 +52,28 @@ def ajouter():
     newId = ent[0].upper() + str(Id)
     stck['maxId'] = L + str(Id)
     stck[newId] = elem
-    home()
+    
+
+def modifier():
+    print('\nQuel element voulez-vous modifier ?',"\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
+    ent = getAnswer(["partition","compositeur","editeur","instrument"])
+    modele = 'MODELE_' + ent.upper()
+    inStck = ent + 's'
+    stck = Datas.D[inStck]
+    while True:
+        val = input('\nId de à modifier :\t')
+        if not val in Datas.D[inStck].keys():
+            result = util.rechercheElement(stck, val)
+            elements = [(x, stck[x]) for x in result]
+            util.printElements(elements)
+            print('Id invalide')
+            continue
+        break
+    elem = util.createElement(MODELE[modele])
+    util.edit(stck[val], **elem)
+    
+
+
     
 def rechercher():
     print("\nQuelle élément voulez vous rechercher ?""\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument")
@@ -62,7 +84,6 @@ def rechercher():
     result = util.rechercheElement(stck, value)
     elements = [(x, stck[x]) for x in result]
     util.printElements(elements)
-    home()
 
 def save():
     try:
@@ -71,7 +92,7 @@ def save():
         print('\n[WARNING] Erreur pendant la sauvegarde')
     else:
         print('\nDonnées sauvegardé sur disque dans "datas.json", backup effectué dans "old.json"\nUtilisez "load backup (lb)" pour recharger le backup')
-    home()
+    
 
 def backup():
     print('\nVoulez vous vraiment recherger la dernière backup ?')
@@ -85,14 +106,30 @@ def backup():
             print('\n[WARNING] Erreur pendant le rechergement du backup')
         else:
             print('\nRechargement du backup terminé')
-    home()
+    
+
+def quitter():
+    print('\nVous etes sur le point de quitter, souhaitez vous sauvegarder les modification ? (oui, non ou annuler)')
+    ent = getAnswer(['oui', 'non', 'annuler'])
+    if ent == 'oui':
+        save()
+        sys.exit()
+    elif ent == 'annuler':
+        print('\nRetour au menu :')
+    elif ent == 'non':
+        sys.exit()
+    
+    
+
 
 
 actions = {
     'ajouter':ajouter,
     'rechercher':rechercher,
+    'modifier': modifier,
     'sauvegarder':save,
-    'backup': backup
+    'backup': backup,
+    'quitter': quitter
 }
 
 MODELE = {

@@ -95,10 +95,12 @@ def edit(element, **edits): #edition d'un disctionaire existant
                 if (checkFor(add, param, stck)): #verifie que la clef existe
                     element[param].append(add) #ajoute cette clef a la list
         elif param in element:
-            if checkFor(add, param, stck):
-                element[param] = add
+            if checkFor(changes, param, stck):
+                element[param] = changes
 
 def printElements(elements):
+    if len(elements) == 0:
+        return
     prt = Texttable()
     prt.set_max_width(0)
     temp = []

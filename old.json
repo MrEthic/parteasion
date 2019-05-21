@@ -1,6 +1,6 @@
 {
     "partitions": {
-        "maxId": "P3",
+        "maxId": "P4",
         "P1": {
             "titre": "La Sonate",
             "mouvement": "",
@@ -30,6 +30,18 @@
             "mouvement": null,
             "tempo": "alegro",
             "identifiant": "opus 12",
+            "ton": null,
+            "compositeur": null,
+            "editeur": null,
+            "format": null,
+            "enregistrement": null,
+            "instruments": []
+        },
+        "P4": {
+            "titre": "la jugue",
+            "mouvement": null,
+            "tempo": "adente",
+            "identifiant": "opus 42",
             "ton": null,
             "compositeur": null,
             "editeur": null,
