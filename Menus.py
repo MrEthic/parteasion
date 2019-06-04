@@ -52,7 +52,21 @@ def ajouter():
     newId = ent[0].upper() + str(Id)
     stck['maxId'] = L + str(Id)
     stck[newId] = elem
-    
+
+def getId(dico):
+    while True:
+        val = input('\nEntrez un Id ou une recherche :\t')
+        if val == '':
+            print("Anulation -- retour menu principale")
+            return None
+        if not val in dico.keys():
+            result = util.rechercheElement(dico, val)
+            elements = [(x, dico[x]) for x in result]
+            util.printElements(elements)
+            print('Id invalide')
+            continue
+        break
+    return val
 
 def modifier():
     print('\nQuel element voulez-vous modifier ?',"\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
@@ -60,15 +74,10 @@ def modifier():
     modele = 'MODELE_' + ent.upper()
     inStck = ent + 's'
     stck = Datas.D[inStck]
-    while True:
-        val = input('\nId de à modifier :\t')
-        if not val in Datas.D[inStck].keys():
-            result = util.rechercheElement(stck, val)
-            elements = [(x, stck[x]) for x in result]
-            util.printElements(elements)
-            print('Id invalide')
-            continue
-        break
+    val = getId(stck)
+    if val == None:
+        return
+    util.printElements([(val, stck[val])])
     elem = util.createElement(MODELE[modele])
     util.edit(stck[val], **elem)
     
@@ -84,6 +93,17 @@ def rechercher():
     result = util.rechercheElement(stck, value)
     elements = [(x, stck[x]) for x in result]
     util.printElements(elements)
+
+def supprimer():
+    print('\nQuel element voulez-vous supprimer ?',"\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
+    ent = getAnswer(["partition","compositeur","editeur","instrument"])
+    inStck = ent + 's'
+    stck = Datas.D[inStck]
+    val = getId(stck)
+    if val == None:
+        return
+    del(stck[val])
+
 
 def save():
     try:
@@ -126,6 +146,7 @@ def quitter():
 actions = {
     'ajouter':ajouter,
     'rechercher':rechercher,
+    'supprimer': supprimer,
     'modifier': modifier,
     'sauvegarder':save,
     'backup': backup,
