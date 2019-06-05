@@ -7,7 +7,7 @@ aliases = {
     'sauvegarder':['sauvegarder', 'save', 'sauvgarde', 'sauv'],
     'quitter':['quitter', 'quit', 'escape', 'esc', 'quiter', 'kiter', 'qiter', 'kit'],
     'partition':['partition', 'part', 'parti', 'partoche', 'particion', 'partission'],
-    'compositeur':['compositeur', 'composer', 'comp', 'conpositeur', 'conpo'],
+    'compositeur':['compositeur', 'composer', 'comp', "compo", 'conpositeur', 'conpo'],
     'instrument':['Instrument', 'instrument', 'instrumant', 'instru', 'instrumen', 'instruman'],
     'record':['enregistrement', 'record', 'rec', 'enreg', 'enregistremant'],
     'editeur':['editeur', 'edit', 'editeure', 'editere', 'editeurre', 'editer'],
@@ -17,5 +17,4 @@ aliases = {
     'annuler':['annuler', 'cancel', 'annul', 'anuler'],
     'format':['format', 'forme', 'form', 'size', 'taille'],
     'backup':['lb', 'load backup', 'charge backup', 'l b']
-
 }
