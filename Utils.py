@@ -14,7 +14,7 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
         stck = ''
         if k in KEYED_PARAM: #si le parametre est sous forme de clefs
             search = (str(k) + 's') if not str(k)[-1:] == 's' else str(k)
-            stck = getattr(Datas, search) #recup les donnes specifique
+            stck = Datas.D[search]
         if k in MULTI_PARAM: #si le prametre est liée a une liste
             element[k] = []
             while True:
@@ -24,11 +24,13 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
                 elif (checkFor(ent, k, stck)): #verifie que la clef existe
                     element[k].append(ent) #ajoute cette clef a la list
         else:
-            ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide)\t')
-            if ent == '':
-                continue
-            elif checkFor(ent, k, stck):
-                element[k] = ent
+            while True:
+                ent = input('Entrez une valeur de ' + str(k) + ' (Appuyez sur "Entrée" pour laisser vide)\t')
+                if ent == '':
+                    break
+                elif checkFor(ent, k, stck):
+                    element[k] = ent
+                    break
     return element
 
 
@@ -39,11 +41,11 @@ def createElement(model): #Creation d'un disctionaire par apport a un modele
 def checkFor(value, key, indict):
     if not key in KEYED_PARAM or key == '': #le parametre n'est pas sous forme de clef
         return True
-    elif value in indict.values(): #Si la clef est reconu
-        printElements([indict[value]]) #imprime l'element
+    elif value in indict.keys(): #Si la clef est reconu
+        printElements([(value, indict[value])]) #imprime l'element
         return True
     else: #sinon
-        print('Impossible de reconaitre la valeur entrée : ', value)
+        print('Impossible de reconaitre la valeur entrée : ', value, "  (Recherche)")
         search = rechercheElement(indict, value) #affiche la recherche correspondante
         prt = [(x, indict[x]) for x in search]
         printElements(prt)
@@ -71,6 +73,8 @@ def rechercheElement(indict, value):
             temp.append(t) #ajout de cette list aux resultats
     sortedTemp = sorted(temp, reverse=True, key=lambda item:item[0]) #trie des listes
     results = [x[1] for x in sortedTemp] #garde que les element (sans le score)
+    if len(results) == 0:
+        print("Aucun résultats...")
     return results
 
 
@@ -85,7 +89,7 @@ def edit(element, **edits): #edition d'un disctionaire existant
         stck = ''
         if param in KEYED_PARAM: #si le parametre est sous forme de clefs
             search = (str(param) + 's') if not str(param)[-1:] == 's' else str(param)
-            stck = getattr(Datas, search) #recup les donnes specifique
+            stck = Datas.D[search] #recup les donnes specifique
 
         if changes == None:
             continue
@@ -108,8 +112,8 @@ def printElements(elements):
         keys = ['ID'] + list(elements[0][1].keys())
         param = [x[1] for x in elements]
     else:
-        keys = ['ID'] + elements[0].keys()
-        param = elements
+        keys = ['ID'] + elements[0].keys() # USELESS
+        param = elements #USELESS
 
     temp.append(keys)
     for e in elements:
@@ -120,6 +124,3 @@ def printElements(elements):
         temp.append(val)
     prt.add_rows(temp, header=True)
     print(prt.draw())
-
-
-

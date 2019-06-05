@@ -9,7 +9,7 @@ aliases = {
     'partition':['partition', 'part', 'parti', 'partoche', 'particion', 'partission'],
     'compositeur':['compositeur', 'composer', 'comp', 'conpositeur', 'conpo'],
     'instrument':['Instrument', 'instrument', 'instrumant', 'instru', 'instrumen', 'instruman'],
-    'enregistrement':['enregistrement', 'record', 'rec', 'enreg', 'enregistremant'],
+    'record':['enregistrement', 'record', 'rec', 'enreg', 'enregistremant'],
     'editeur':['editeur', 'edit', 'editeure', 'editere', 'editeurre', 'editer'],
     'oui':['oui', 'yes', 'si', 'y', 'ui'],
     'non':['non', 'no', 'n', 'nein'],

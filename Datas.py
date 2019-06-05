@@ -11,17 +11,17 @@ def load():
 
     D['partitions'] = datas['partitions']
     D['compositeurs'] = datas['compositeurs']
-    #editeurs = datas['editeurs']
-    #records = datas['records']
-    #instruments = datas['instruments']
+    D['editeurs'] = datas['editeurs']
+    D['records'] = datas['records']
+    D['instruments'] = datas['instruments']
 
 def save():
     datas = {
         'partitions':D['partitions'],
         'compositeurs':D['compositeurs'],
-        'editeurs':0,
-        'records':0,
-        'instruments':0
+        'editeurs':D['editeurs'],
+        'records':D['records'],
+        'instruments':D['instruments']
     }
     os.remove('old.json')
     os.rename('datas.json', 'old.json')

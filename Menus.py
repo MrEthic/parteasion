@@ -2,14 +2,16 @@ import Aliases as als
 import Utils as util
 import Datas
 import sys
+#import os
 
 def init():
+    #os.system("cls") Ain't woking guys please
     rtn = '\t\t\t' + ' ' + 33*'/' + '|\n' + 2* ('\t\t\t' + '||' + 30*' ' + '|||\n')
     rtn += '\t\t\t' + '||' + 8*' ' + '______FUZETEAM' + 8*' ' + '|||\n'
     rtn += '\t\t\t' + '||' + 8*' ' + 'PARTEASION APP' + 8*' ' + '|||\n'
     rtn += 2* ('\t\t\t' + '||' + 30*' ' + '|||\n') + '\t\t\t' + ' ' + 33*'\\' + '|\n'
 
-    print(rtn)
+    print('\n\n',rtn)
 
     Datas.load()
     while True:
@@ -26,7 +28,7 @@ def getAnswer(answers):
                 continue
             if ent in al:
                 return word
-        ent = input('Requette non valide, recomencer\n   --> ')
+        ent = input('Requette non valide, recomencer\n   --> ').lower()
 
 
 def home():
@@ -38,8 +40,8 @@ def home():
 
                 
 def ajouter():
-    print("\nQue voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
-    ent = getAnswer(["partition","compositeur","editeur","instrument"])
+    print("\nQue voulez-vous ajouter ? ","\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur", "\n" , " - enregistrement","\n" ," - instrument","\n")
+    ent = getAnswer(["partition","compositeur","editeur","record", "instrument"])
     modele = 'MODELE_' + ent.upper()
     elem = util.createElement(MODELE[modele])
     inStck = ent + 's'
@@ -60,6 +62,7 @@ def getId(dico):
             print("Anulation -- retour menu principale")
             return None
         if not val in dico.keys():
+            val = val.lower()
             result = util.rechercheElement(dico, val)
             elements = [(x, dico[x]) for x in result]
             util.printElements(elements)
@@ -69,8 +72,8 @@ def getId(dico):
     return val
 
 def modifier():
-    print('\nQuel element voulez-vous modifier ?',"\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument","\n")
-    ent = getAnswer(["partition","compositeur","editeur","instrument"])
+    print('\nQuel element voulez-vous modifier ?',"\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur", "\n" , " - enregistrement""\n" ," - instrument","\n")
+    ent = getAnswer(["partition","compositeur","editeur","record", "instrument"])
     modele = 'MODELE_' + ent.upper()
     inStck = ent + 's'
     stck = Datas.D[inStck]
@@ -87,7 +90,7 @@ def modifier():
 def rechercher():
     print("\nQuelle élément voulez vous rechercher ?""\n" , " - partition","\n" , " - compositeur" ,"\n" ," - editeur","\n" ," - instrument")
     ent = getAnswer(["partition","compositeur","editeur","instrument"])
-    value = input('\nSaisie de recherche :\t')
+    value = input('\nSaisie de recherche :\t').lower()
     inStck = ent + 's'
     stck = Datas.D[inStck]
     result = util.rechercheElement(stck, value)
@@ -163,7 +166,7 @@ MODELE = {
         'compositeur':None,
         'editeur':None,
         'format':None,
-        'enregistrement':None,
+        'records':None,
         'instruments':None
     },
     'MODELE_COMPOSITEUR': {
@@ -178,7 +181,7 @@ MODELE = {
         'siecle':None
     },
 
-    'MODELE_ENREGISTREMENT': {
+    'MODELE_RECORD': {
         'nom':None,
         'date':None
     },

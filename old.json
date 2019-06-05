@@ -1,97 +1,98 @@
 {
     "partitions": {
-        "maxId": "P5",
+        "maxId": "P2",
         "P1": {
-            "titre": "La vrai Sonate",
-            "mouvement": "droit",
-            "tempo": "alegro",
-            "identifiant": "no 14 opus 27",
-            "ton": "do di\u00e8se mineur",
-            "compositeur": "C124",
+            "titre": "Concerto Italien",
+            "mouvement": "Moderato",
+            "tempo": "F major",
+            "identifiant": "BWV 971",
+            "ton": null,
+            "compositeur": "C2",
             "editeur": "",
-            "format": "F11",
-            "enregistrement": [
-                "R14",
-                "R21"
-            ],
+            "format": "pdf",
+            "records": [],
             "instruments": [
-                "I3",
-                "I21"
+                "I1"
             ]
         },
         "P2": {
-            "titre": "Sonate",
-            "mouvement": "",
-            "tempo": "alegro",
-            "identifiant": "no 19 opus 49",
-            "ton": "Sol mineur",
-            "compositeur": "C124",
-            "editeur": "",
-            "format": "F8",
-            " enregistrement ": [
-                "R25",
-                "R11"
+            "titre": "L'Art de la fugue",
+            "mouvement": "contrepunctus",
+            "tempo": "C major",
+            "identifiant": "BWV 1080",
+            "ton": null,
+            "compositeur": "C2",
+            "editeur": null,
+            "format": "pdf",
+            "records": [
+                "R2"
             ],
             "instruments": [
-                "I5"
+                "I1",
+                "I3"
             ]
-        },
-        "P3": {
-            "titre": "Au claire de la lune",
-            "mouvement": null,
-            "tempo": "alegro",
-            "identifiant": "opus 12",
-            "ton": null,
-            "compositeur": null,
-            "editeur": null,
-            "format": null,
-            "enregistrement": [],
-            "instruments": []
-        },
-        "P4": {
-            "titre": "la jugue",
-            "mouvement": null,
-            "tempo": "adente",
-            "identifiant": "opus 42",
-            "ton": null,
-            "compositeur": null,
-            "editeur": null,
-            "format": null,
-            "enregistrement": [],
-            "instruments": []
-        },
-        "P5": {
-            "titre": null,
-            "mouvement": null,
-            "tempo": null,
-            "identifiant": null,
-            "ton": null,
-            "compositeur": null,
-            "editeur": null,
-            "format": null,
-            "enregistrement": [],
-            "instruments": []
         }
     },
     "compositeurs": {
-        "maxId": "C3",
+        "maxId": "C5",
         "C1": {
             "nom": "Beethoven",
             "prenom": "Ludwig",
-            "siecle": "18"
+            "siecle": "18 19"
         },
         "C2": {
+            "nom": "Bach",
+            "prenom": "Jean-Sebastien",
+            "siecle": "18"
+        },
+        "C3": {
             "nom": "Chopin",
             "prenom": "Frederic",
             "siecle": "19"
         },
-        "C3": {
-            "nom": "Bach",
-            "prenom": "Jean-Sebastien",
+        "C4": {
+            "nom": "Schumann",
+            "prenom": "Robert",
+            "siecle": "19"
+        },
+        "C5": {
+            "nom": "Mozart",
+            "prenom": "Wolfgang Amadeus",
             "siecle": "18"
         }
     },
-    "editeurs": 0,
-    "records": 0,
-    "instruments": 0
+    "editeurs": {
+        "maxId": "E1",
+        "E1": {
+            "nom": "Schott",
+            "prenom": "Bernhard",
+            "siecle": "18"
+        }
+    },
+    "records": {
+        "maxId": "R2",
+        "R1": {
+            "nom": "Ouverture Bal des Pompier Paris 12eme",
+            "date": "3 janvier 2000"
+        },
+        "R2": {
+            "nom": "Bal Hoche Versailles 2018",
+            "date": "12 juillet 2018"
+        }
+    },
+    "instruments": {
+        "maxId": "I3",
+        "I1": {
+            "nom": "Piano",
+            "type": "Corde frapp\u00e9"
+        },
+        "I2": {
+            "nom": "Violon",
+            "type": "Corde"
+        },
+        "I3": {
+            "nom": "Orgue \u00e0 tuyaux",
+            "type": null
+        }
+    }
 }
